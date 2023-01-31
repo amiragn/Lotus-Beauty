@@ -1,0 +1,11 @@
+REFERENSI SOURCE CODE
+
+1. PPT dari Bapak Putra Pandu Adikara
+
+2. https://www.codekop.com/read/tutorial-java-cara-membuat-crud-java-dan-mysql-netbeans.html
+
+3. https://youtu.be/AtGdkXahht8
+
+4. https://www.maribelajarcoding.com/2020/06/membuat-pencarian-data-java-netbeans.html
+
+5. https://www.youtube.com/watch?v=fPhno3zaH1o

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NOTAPEMBELIANFIX" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="be401548-2446-4021-a26b-c024d82beeb7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="fix"/>
+	<parameter name="param" class="java.lang.String"/>
+	<parameter name="param2" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT "Pesanan"."ID_Pesanan",
+	"Pembeli"."ID_Toko",
+	"Pembeli"."Nama_Toko",
+	"Produk"."ID_Produk",
+	"Produk"."Nama_Produk",
+	"Karyawan"."Nama_Lengkap",
+	"Keranjang"."ID_Keranjang",
+	"Pembayaran"."Waktu_Pembayaran",
+	"Pesanan"."Waktu_Pemesanan",
+	"Produk"."Harga",
+	"Keranjang_has_Produk"."Sub_Total",
+	"Keranjang_Detail_Produk"."Kuantitas",
+	"Pesanan"."Ongkos_Kirim",
+	"Pesanan"."Total_Harga",
+	"Pesanan"."Status_Pemesanan",
+	"Pengiriman"."Status_Pengiriman",
+	"Pembayaran"."Total_Pembayaran"
+FROM "Pesanan",
+	"Keranjang",
+	"Keranjang_Detail_Produk",
+	"Keranjang_has_Produk",
+	"Pembeli",
+	"Produk",
+	"Pembayaran",
+	"Pengiriman",
+	"Karyawan_Logistik",
+	"Karyawan"
+WHERE 
+	 "Pesanan"."Keranjang_ID_Keranjang" = "Keranjang"."ID_Keranjang" 
+	 AND "Keranjang"."ID_Keranjang" = "Keranjang_Detail_Produk"."Keranjang_ID_Keranjang" 
+	 AND "Keranjang_Detail_Produk"."Keranjang_ID_Keranjang" = "Keranjang_has_Produk"."Keranjang_ID_Keranjang" 
+	 AND "Keranjang"."Pembeli_ID_Toko" = "Pembeli"."ID_Toko" 
+	 AND "Keranjang_Detail_Produk"."Produk_ID_Produk" = "Produk"."ID_Produk" 
+	 AND "Keranjang_has_Produk"."Produk_ID_Produk" = "Produk"."ID_Produk" 
+	 AND "Pesanan"."ID_Pesanan" = "Pembayaran"."Pesanan_ID_Pesanan" 
+	 AND "Pesanan"."ID_Pesanan" = "Pengiriman"."Pesanan_ID_Pesanan" 
+	 AND "Pengiriman"."Karyawan_Logistik_ID_Logistik" = "Karyawan_Logistik"."ID_Logistik" 
+	 AND "Karyawan_Logistik"."Karyawan_ID_Karyawan" = "Karyawan"."ID_Karyawan" 
+	 AND "Pembeli"."ID_Toko" = $P{param}
+	 AND "Pesanan"."ID_Pesanan" = $P{param2}]]>
+	</queryString>
+	<field name="ID_Pesanan" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_Pesanan"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_Pesanan"/>
+	</field>
+	<field name="ID_Toko" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_Toko"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_Toko"/>
+	</field>
+	<field name="Nama_Toko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nama_Toko"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nama_Toko"/>
+	</field>
+	<field name="ID_Produk" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_Produk"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_Produk"/>
+	</field>
+	<field name="Nama_Produk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nama_Produk"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nama_Produk"/>
+	</field>
+	<field name="Nama_Lengkap" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Nama_Lengkap"/>
+		<property name="com.jaspersoft.studio.field.label" value="Nama_Lengkap"/>
+	</field>
+	<field name="ID_Keranjang" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ID_Keranjang"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID_Keranjang"/>
+	</field>
+	<field name="Waktu_Pembayaran" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Waktu_Pembayaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="Waktu_Pembayaran"/>
+	</field>
+	<field name="Waktu_Pemesanan" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="Waktu_Pemesanan"/>
+		<property name="com.jaspersoft.studio.field.label" value="Waktu_Pemesanan"/>
+	</field>
+	<field name="Harga" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="Harga"/>
+	</field>
+	<field name="Sub_Total" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Sub_Total"/>
+		<property name="com.jaspersoft.studio.field.label" value="Sub_Total"/>
+	</field>
+	<field name="Kuantitas" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Kuantitas"/>
+		<property name="com.jaspersoft.studio.field.label" value="Kuantitas"/>
+	</field>
+	<field name="Ongkos_Kirim" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Ongkos_Kirim"/>
+		<property name="com.jaspersoft.studio.field.label" value="Ongkos_Kirim"/>
+	</field>
+	<field name="Total_Harga" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Total_Harga"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total_Harga"/>
+	</field>
+	<field name="Status_Pemesanan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Status_Pemesanan"/>
+		<property name="com.jaspersoft.studio.field.label" value="Status_Pemesanan"/>
+	</field>
+	<field name="Status_Pengiriman" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Status_Pengiriman"/>
+		<property name="com.jaspersoft.studio.field.label" value="Status_Pengiriman"/>
+	</field>
+	<field name="Total_Pembayaran" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Total_Pembayaran"/>
+		<property name="com.jaspersoft.studio.field.label" value="Total_Pembayaran"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="252" splitType="Stretch">
+			<staticText>
+				<reportElement key="" x="177" y="30" width="212" height="40" uuid="529c9656-be1a-4166-8a9e-7ce21a5fc298">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOTA PEMBELIAN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="71" width="120" height="18" uuid="75a394ff-5f64-431b-9b6f-f7e829a72752"/>
+				<textElement textAlignment="Justified">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LOTUS BEAUTY"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="90" width="140" height="30" uuid="f7b3c9f1-ba4b-476e-b63d-607e5b8e6d0c"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Jl. Cenderawasih Blok J5 No. 21, Malang 42415 ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="127" width="190" height="20" uuid="e55e1326-8fae-48cb-b70b-f83be7010462"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Email: Lotusbeauty@store.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="110" width="156" height="20" uuid="6736c667-9193-4f3b-b8ac-6ea2cdb12550"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[No Telp. 085409235379]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="70" width="140" height="20" uuid="e1627bab-476c-46bc-b752-d0e405f91cb9"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Toko Pemesan : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="459" y="70" width="140" height="20" uuid="e3d30a9c-898d-49a7-8c72-ba3ef1a5741a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nama_Toko}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="90" width="140" height="20" uuid="d7bf407a-0cc9-470b-8531-b3f346a6502c"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Waktu Pemesanan   : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="324" y="111" width="140" height="20" uuid="2bedf444-ac7e-4324-a275-1c8b9c1f8db6"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Waktu Pembayaran : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="130" width="140" height="20" uuid="4e188d8a-b07e-4741-8340-7c554ec2eb13"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Status Pesanan : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="423" y="131" width="140" height="20" uuid="9c6e428d-3007-4c36-92bb-fef0ffceeb38">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Status_Pemesanan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="150" width="140" height="20" uuid="c7361951-14f8-4ee5-8a1a-f8fafda17110"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Status Pengiriman : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="436" y="150" width="140" height="20" uuid="f913ac0a-81fd-4a7a-a857-5f28a820cf05">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Status_Pengiriman}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="325" y="170" width="140" height="20" uuid="b6395ae5-aeaa-4cf7-b862-5e8cd8bfaca6"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Pengirim : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="422" y="170" width="140" height="20" uuid="6e864d25-be5b-4caf-a58e-288eeed64b4d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nama_Lengkap}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="447" y="111" width="140" height="20" uuid="02752e6b-55c2-442a-9253-d064cdf0022a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Waktu_Pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="90" width="140" height="20" uuid="545b51e7-65e4-41ce-9cf8-4b31f266980a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Waktu_Pemesanan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="111" height="30" uuid="e5b8b4f0-72c1-437a-bf12-9b182846c1d8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="de062548-7fdd-472f-9752-dbfa1103c6f9"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[ID Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="0" width="111" height="30" uuid="215d07c6-5ad2-49c5-8557-33d2a920e90c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3dc3c3a-0963-439d-84f8-87629dbd28f4"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="0" width="111" height="30" uuid="991812d9-e823-40b9-bda4-3d1eba91a98b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a61286b-2c58-4c37-956a-0b3d0903ae8f"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="463" y="0" width="111" height="30" uuid="1a7016d0-446b-4566-8aa0-1ee007cf3827">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="960a7527-0572-4c5c-b80d-9e6e6dc0de83"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="353" y="0" width="111" height="30" uuid="892d1247-9362-41f9-b71f-66ae930cd7e2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eb2eb93f-1b4a-45ea-aef2-1e468d5daa34"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Kuantitas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="111" height="30" uuid="1cfef2a5-423b-4bc2-95ed-3a34e93ffc91">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="de062548-7fdd-472f-9752-dbfa1103c6f9"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ID_Produk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="0" width="111" height="30" uuid="6b846514-a8f8-4fba-885c-124542769303">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e3dc3c3a-0963-439d-84f8-87629dbd28f4"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Nama_Produk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="254" y="0" width="111" height="30" uuid="f40bc52a-4ac5-446c-b81c-e8703680f94c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2a61286b-2c58-4c37-956a-0b3d0903ae8f"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="464" y="0" width="111" height="30" uuid="9b7a4d78-452e-499d-bea7-4c74d824fe3d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="960a7527-0572-4c5c-b80d-9e6e6dc0de83"/>
+				</reportElement>
+				<box>
+					<topPen lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sub_Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="111" height="30" uuid="122f3a41-9498-474c-b3dd-d2cfce0ed8f4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eb2eb93f-1b4a-45ea-aef2-1e468d5daa34"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Kuantitas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="700" y="37" width="100" height="30" uuid="6a3c1892-47b4-488b-b828-d44eaa76b53c"/>
+				<textFieldExpression><![CDATA[$P{param2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="230" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="129" width="140" height="20" uuid="91d5f4e4-8459-4961-b7e8-b95142027125"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Harga : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="150" width="140" height="20" uuid="4ffb9360-ac05-48cc-a22a-1de9ee19ba19"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Biaya Kirim  : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="171" width="190" height="20" uuid="e4fc92e8-2454-41bf-b226-a3b1a8f3d4ef"/>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Yang Harus Dibayarkan: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="130" width="140" height="20" uuid="4c73421b-64f5-443b-bd60-a39732ea20c1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total_Harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="150" width="140" height="20" uuid="c23da526-3d31-4975-9278-bebe4df9c856">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Ongkos_Kirim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="171" width="140" height="20" uuid="c9577b10-a265-47ba-b21c-2ad9cc864b3e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total_Pembayaran}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="20" y="110" width="500" height="100" uuid="a8b4e2d0-298b-41e9-880e-1d8bbaaf6383"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+			</frame>
+			<textField>
+				<reportElement x="660" y="30" width="100" height="30" uuid="29a06c48-a456-47e6-b92a-e7b0fda623d2"/>
+				<textFieldExpression><![CDATA[$P{param}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
